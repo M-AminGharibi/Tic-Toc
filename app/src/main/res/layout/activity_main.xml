@@ -96,100 +96,100 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:onClick="clickOnImage"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
-        app:srcCompat="@drawable/oo" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <ImageView
         android:id="@+id/imageView11"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:onClick="clickOnImage"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/guideline3"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/x" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:onClick="clickOnImage"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
-        app:srcCompat="@drawable/oo" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <ImageView
         android:id="@+id/imageView14"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:onClick="clickOnImage"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline6"
-        app:srcCompat="@drawable/oo" />
+        app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <ImageView
         android:id="@+id/imageView15"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:onClick="clickOnImage"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toTopOf="@+id/guideline6"
-        app:srcCompat="@drawable/oo" />
+        app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <ImageView
         android:id="@+id/imageView16"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:onClick="clickOnImage"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toTopOf="@+id/guideline6"
-        app:srcCompat="@drawable/x" />
+        app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <ImageView
         android:id="@+id/imageView17"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:onClick="clickOnImage"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:srcCompat="@drawable/x" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <ImageView
         android:id="@+id/imageView19"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:onClick="clickOnImage"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:srcCompat="@drawable/oo" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <ImageView
         android:id="@+id/imageView20"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:onClick="clickOnImage"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:srcCompat="@drawable/x" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
