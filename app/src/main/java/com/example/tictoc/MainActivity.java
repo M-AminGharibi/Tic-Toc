@@ -18,12 +18,18 @@ public class MainActivity extends AppCompatActivity {
     int activePlayer = 0;
     int[] gameState = {2, 2, 2, 2, 2, 2, 2, 2, 2};  // 0 -> X      1 -> O      2 -> Null
     int[][] winPositions = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, {0, 4, 8}, {2, 4, 6}};
+    TextView tv_playerO;
+    TextView tv_playerX;
 
-
+    int playerOWinCount=0;
+    int playerXWinCount=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tv_playerO = findViewById(R.id.tv_PlayerO);
+        tv_playerX = findViewById(R.id.tv_PlayerX);
+
 
 
     }
@@ -49,7 +55,24 @@ public class MainActivity extends AppCompatActivity {
             if (gameState[winPosition[0]] == gameState[winPosition[1]]
                     && gameState[winPosition[1]] == gameState[winPosition[2]]
                     && gameState[winPosition[0]] != 2) {
-                Toast.makeText(this, "win", Toast.LENGTH_SHORT).show();
+
+
+                if (activePlayer == 0) {
+                    playerOWinCount++;
+                    tv_playerO.setText(playerOWinCount+"");
+
+                    Toast.makeText(this, "O win", Toast.LENGTH_SHORT).show();
+
+                }else {
+                    playerXWinCount++;
+                    tv_playerX.setText(playerXWinCount+"");
+                    Toast.makeText(this, "X win", Toast.LENGTH_SHORT).show();
+
+                }
+
+
+
+
                 resetGame();
             }
         }
