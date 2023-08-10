@@ -2,6 +2,8 @@ package com.example.tictoc;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +15,8 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     int activePlayer = 0;
+
+
     boolean gameActive = true;
     public static int counter = 0;
     int[] gameState = {2, 2, 2, 2, 2, 2, 2, 2, 2};  // 0 -> X      1 -> O      2 -> Null
@@ -21,10 +25,20 @@ public class MainActivity extends AppCompatActivity {
     TextView tv_playerX;
     TextView status;
     TextView winner;
+    ImageView imageView0;
+    ImageView imageView1;
+    ImageView imageView2;
+    ImageView imageView3;
+    ImageView imageView4;
+    ImageView imageView5;
+    ImageView imageView6;
+    ImageView imageView7;
+    ImageView imageView8;
 
     int playerOWinCount = 0;
     int playerXWinCount = 0;
     int flag = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +49,15 @@ public class MainActivity extends AppCompatActivity {
         status = findViewById(R.id.tv_main_status);
         winner = findViewById(R.id.tv_main_winner);
         Button btn_Reset = findViewById(R.id.btn_reset);
+        imageView0 = findViewById(R.id.imageView0);
+        imageView1 = findViewById(R.id.imageView1);
+        imageView2 = findViewById(R.id.imageView2);
+        imageView3 = findViewById(R.id.imageView3);
+        imageView4 = findViewById(R.id.imageView4);
+        imageView5 = findViewById(R.id.imageView5);
+        imageView6 = findViewById(R.id.imageView6);
+        imageView7 = findViewById(R.id.imageView7);
+        imageView8 = findViewById(R.id.imageView8);
         btn_Reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,11 +73,11 @@ public class MainActivity extends AppCompatActivity {
     public void clickOnImage(View view) {
         ImageView clickedImageView = (ImageView) view;
         int tag = Integer.parseInt(clickedImageView.getTag().toString());
-        if (!gameActive) {
-            //resetGame();
-            //Reset the counter
-            counter = 0;
-        }
+//        if (!gameActive) {
+//            //resetGame();
+//            //Reset the counter
+//            counter = 0;
+//        }
          if (gameActive == true) {
 
 
@@ -108,6 +131,8 @@ public class MainActivity extends AppCompatActivity {
 
                 String winnerStr;
                 gameActive = false;
+                //Animation pulse = AnimationUtils.loadAnimation(this, R.anim.heart_pulse);
+                //imageView0.startAnimation(pulse);
 
                 if (activePlayer == 0) {
                     playerOWinCount++;
@@ -138,15 +163,25 @@ public class MainActivity extends AppCompatActivity {
 
         Arrays.fill(gameState, 2);
         activePlayer = 0;
-        ((ImageView) findViewById(R.id.imageView0)).setImageResource(0);
-        ((ImageView) findViewById(R.id.imageView1)).setImageResource(0);
-        ((ImageView) findViewById(R.id.imageView2)).setImageResource(0);
-        ((ImageView) findViewById(R.id.imageView3)).setImageResource(0);
-        ((ImageView) findViewById(R.id.imageView4)).setImageResource(0);
-        ((ImageView) findViewById(R.id.imageView5)).setImageResource(0);
-        ((ImageView) findViewById(R.id.imageView6)).setImageResource(0);
-        ((ImageView) findViewById(R.id.imageView7)).setImageResource(0);
-        ((ImageView) findViewById(R.id.imageView8)).setImageResource(0);
+        counter = 0;
+        flag=0;
+        imageView0.setImageResource(0);
+        imageView1.setImageResource(0);
+        imageView2.setImageResource(0);
+        imageView3.setImageResource(0);
+        imageView4.setImageResource(0);
+        imageView5.setImageResource(0);
+        imageView6.setImageResource(0);
+        imageView7.setImageResource(0);
+        imageView8.setImageResource(0);
+//        ((ImageView) findViewById(R.id.imageView1)).setImageResource(0);
+//        ((ImageView) findViewById(R.id.imageView2)).setImageResource(0);
+//        ((ImageView) findViewById(R.id.imageView3)).setImageResource(0);
+//        ((ImageView) findViewById(R.id.imageView4)).setImageResource(0);
+//        ((ImageView) findViewById(R.id.imageView5)).setImageResource(0);
+//        ((ImageView) findViewById(R.id.imageView6)).setImageResource(0);
+//        ((ImageView) findViewById(R.id.imageView7)).setImageResource(0);
+//        ((ImageView) findViewById(R.id.imageView8)).setImageResource(0);
         status.setText("X's Turn - Tap to play");
         winner.setText(null);
 //        ConstraintLayout constraintLayout = findViewById(R.id.container);
