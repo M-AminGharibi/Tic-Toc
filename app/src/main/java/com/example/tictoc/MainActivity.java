@@ -1,6 +1,7 @@
 package com.example.tictoc;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView6;
     ImageView imageView7;
     ImageView imageView8;
+    ImageView[] imageViews;
 
     int playerOWinCount = 0;
     int playerXWinCount = 0;
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         imageView6 = findViewById(R.id.imageView6);
         imageView7 = findViewById(R.id.imageView7);
         imageView8 = findViewById(R.id.imageView8);
+        imageViews = new ImageView[]{imageView0, imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7, imageView8};
         btn_Reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 //            //Reset the counter
 //            counter = 0;
 //        }
-         if (gameActive == true) {
+        if (gameActive == true) {
 
 
             if (gameState[tag] == 2) {
@@ -121,28 +124,38 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    public void winnerCheck(){
+    public void winnerCheck() {
         for (int[] winPosition : winPositions) {
             if (gameState[winPosition[0]] == gameState[winPosition[1]]
                     && gameState[winPosition[1]] == gameState[winPosition[2]]
                     && gameState[winPosition[0]] != 2) {
                 flag = 1;
 
+                System.out.println(winPosition[0]);
+                System.out.println(winPosition[1]);
+                System.out.println(winPosition[2]);
+
+
                 String winnerStr;
                 gameActive = false;
-                //Animation pulse = AnimationUtils.loadAnimation(this, R.anim.heart_pulse);
-                //imageView0.startAnimation(pulse);
+                Animation pulse = AnimationUtils.loadAnimation(this, R.anim.heart_pulse);
+
 
                 if (activePlayer == 0) {
                     playerOWinCount++;
                     tv_playerO.setText(playerOWinCount + "");
+                    imageViews[winPosition[0]].startAnimation(pulse);
+                    imageViews[winPosition[1]].startAnimation(pulse);
+                    imageViews[winPosition[2]].startAnimation(pulse);
 
                     //Toast.makeText(this, "O win", Toast.LENGTH_SHORT).show();
 
                 } else {
                     playerXWinCount++;
                     tv_playerX.setText(playerXWinCount + "");
+                    imageViews[winPosition[0]].startAnimation(pulse);
+                    imageViews[winPosition[1]].startAnimation(pulse);
+                    imageViews[winPosition[2]].startAnimation(pulse);
                     //Toast.makeText(this, "X win", Toast.LENGTH_SHORT).show();
 
                 }
@@ -159,12 +172,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
     public void resetGame() {
 
         Arrays.fill(gameState, 2);
         activePlayer = 0;
         counter = 0;
-        flag=0;
+        flag = 0;
         imageView0.setImageResource(0);
         imageView1.setImageResource(0);
         imageView2.setImageResource(0);
