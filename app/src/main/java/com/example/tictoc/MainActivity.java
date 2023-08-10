@@ -188,6 +188,16 @@ public class MainActivity extends AppCompatActivity {
         imageView6.setImageResource(0);
         imageView7.setImageResource(0);
         imageView8.setImageResource(0);
+        imageView0.clearAnimation();
+        imageView1.clearAnimation();
+        imageView2.clearAnimation();
+        imageView3.clearAnimation();
+        imageView4.clearAnimation();
+        imageView5.clearAnimation();
+        imageView6.clearAnimation();
+        imageView7.clearAnimation();
+        imageView8.clearAnimation();
+
 //        ((ImageView) findViewById(R.id.imageView1)).setImageResource(0);
 //        ((ImageView) findViewById(R.id.imageView2)).setImageResource(0);
 //        ((ImageView) findViewById(R.id.imageView3)).setImageResource(0);
