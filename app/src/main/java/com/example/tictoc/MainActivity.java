@@ -20,9 +20,11 @@ public class MainActivity extends AppCompatActivity {
     TextView tv_playerO;
     TextView tv_playerX;
     TextView status;
+    TextView winner;
 
     int playerOWinCount = 0;
     int playerXWinCount = 0;
+    int flag = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +33,14 @@ public class MainActivity extends AppCompatActivity {
         tv_playerO = findViewById(R.id.tv_PlayerO);
         tv_playerX = findViewById(R.id.tv_PlayerX);
         status = findViewById(R.id.tv_main_status);
+        winner = findViewById(R.id.tv_main_winner);
         Button btn_Reset = findViewById(R.id.btn_reset);
         btn_Reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 resetGame();
+                gameActive = true;
+
             }
         });
 
@@ -46,85 +51,91 @@ public class MainActivity extends AppCompatActivity {
         ImageView clickedImageView = (ImageView) view;
         int tag = Integer.parseInt(clickedImageView.getTag().toString());
         if (!gameActive) {
-            resetGame();
+            //resetGame();
             //Reset the counter
             counter = 0;
         }
-        if (gameState[tag] == 2) {
-            // increase the counter
-            // after every tap
-            counter++;
-
-            // check if its the last box
-            if (counter == 9) {
-                // reset the game
-                gameActive = false;
-            }
-
-            gameState[tag] = activePlayer;
-            clickedImageView.setTranslationY(-1500);
-
-            if (activePlayer == 0) {
-                clickedImageView.setImageResource(R.drawable.x);
-                activePlayer = 1;
-                status.setText("O's Turn - Tap to play");
-            } else {
-                clickedImageView.setImageResource(R.drawable.oo);
-                activePlayer = 0;
-                status.setText("X's Turn - Tap to play");
-            }
-            clickedImageView.animate().translationYBy(1500).rotation(360).setDuration(200);
-        }
+         if (gameActive == true) {
 
 
-        int flag = 0;
+            if (gameState[tag] == 2) {
+                // increase the counter
+                // after every tap
+                counter++;
 
-
-        if (counter > 4) {
-            for (int[] winPosition : winPositions) {
-                if (gameState[winPosition[0]] == gameState[winPosition[1]]
-                        && gameState[winPosition[1]] == gameState[winPosition[2]]
-                        && gameState[winPosition[0]] != 2) {
-                    flag = 1;
-
-                    String winnerStr;
+                // check if its the last box
+                if (counter == 9) {
+                    // reset the game
                     gameActive = false;
-
-                    if (activePlayer == 0) {
-                        playerOWinCount++;
-                        tv_playerO.setText(playerOWinCount + "");
-
-                        //Toast.makeText(this, "O win", Toast.LENGTH_SHORT).show();
-
-                    } else {
-                        playerXWinCount++;
-                        tv_playerX.setText(playerXWinCount + "");
-                        //Toast.makeText(this, "X win", Toast.LENGTH_SHORT).show();
-
-                    }
-                    if (gameState[winPosition[0]] == 0) {
-                        winnerStr = "X has won";
-                    } else {
-                        winnerStr = "O has won";
-                    }
-                    status.setText(winnerStr);
-
-                   // resetGame();
                 }
+
+                gameState[tag] = activePlayer;
+                clickedImageView.setTranslationY(-1250);
+
+                if (activePlayer == 0) {
+                    clickedImageView.setImageResource(R.drawable.x);
+                    activePlayer = 1;
+                    status.setText("O's Turn - Tap to play");
+                } else {
+                    clickedImageView.setImageResource(R.drawable.oo);
+                    activePlayer = 0;
+                    status.setText("X's Turn - Tap to play");
+                }
+                clickedImageView.animate().translationYBy(1250).rotation(180).setDuration(150);
             }
+
+            if (counter > 4) {
+                winnerCheck();
+            }
+
+            if (counter == 9 && flag == 0) {
+                status.setText("Match Draw");
+                winner.setText("Match Draw");
+                //resetGame();
+            }
+
         }
-
-        if (counter == 9 && flag == 0) {
-            status.setText("Match Draw");
-            //resetGame();
-        }
-
-
     }
 
 
+
+    public void winnerCheck(){
+        for (int[] winPosition : winPositions) {
+            if (gameState[winPosition[0]] == gameState[winPosition[1]]
+                    && gameState[winPosition[1]] == gameState[winPosition[2]]
+                    && gameState[winPosition[0]] != 2) {
+                flag = 1;
+
+                String winnerStr;
+                gameActive = false;
+
+                if (activePlayer == 0) {
+                    playerOWinCount++;
+                    tv_playerO.setText(playerOWinCount + "");
+
+                    //Toast.makeText(this, "O win", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    playerXWinCount++;
+                    tv_playerX.setText(playerXWinCount + "");
+                    //Toast.makeText(this, "X win", Toast.LENGTH_SHORT).show();
+
+                }
+                if (gameState[winPosition[0]] == 0) {
+                    winnerStr = "X has won, Reset The Game"; //status Text View
+                    winner.setText("X won!"); //winner Text View
+                } else {
+                    winnerStr = "O has won, Reset The Game"; //status Text View
+                    winner.setText("O won!"); //winner Text View
+                }
+                status.setText(winnerStr);
+
+                // resetGame();
+            }
+        }
+    }
     public void resetGame() {
-        gameActive = true;
+
         Arrays.fill(gameState, 2);
         activePlayer = 0;
         ((ImageView) findViewById(R.id.imageView0)).setImageResource(0);
@@ -137,8 +148,7 @@ public class MainActivity extends AppCompatActivity {
         ((ImageView) findViewById(R.id.imageView7)).setImageResource(0);
         ((ImageView) findViewById(R.id.imageView8)).setImageResource(0);
         status.setText("X's Turn - Tap to play");
-
-
+        winner.setText(null);
 //        ConstraintLayout constraintLayout = findViewById(R.id.container);
 //        for (int i = 0; i < constraintLayout.getChildCount(); i++) {
 //            if (constraintLayout.getChildAt(i) instanceof ImageView) {
